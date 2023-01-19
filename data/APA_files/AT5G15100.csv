@@ -1,0 +1,16 @@
+chrom,source,feature,begin,end,,,,locus,transcript,,,
+Chr5,Araport11,mRNA,4892016,4894113,.,-,.,AT5G15100,1,_Curator_summary=Encodes an auxin transporter with a strong expression in a male gametophyte. Mutant studies reveal a role for auxin transport in regulating pollen development and function.   It acts together with PIN5.,Dbxref=gene:2147834,
+Chr5,Araport11,three_prime_UTR,4892016,4892158,.,-,.,AT5G15100,1,Name=PIN8:three_prime_UTR:1,ID=AT5G15100:three_prime_UTR:1,Parent=AT5G15100.1
+Chr5,Araport11,exon,4892016,4892225,.,-,.,AT5G15100,1,Name=PIN8:exon:6,ID=AT5G15100:exon:6,Parent=AT5G15100.1
+Chr5,Araport11,CDS,4892159,4892225,.,-,1,AT5G15100,1,Name=PIN8:CDS:6,ID=AT5G15100:CDS:6,Parent=AT5G15100.1
+Chr5,Araport11,exon,4892327,4892403,.,-,.,AT5G15100,1,Name=PIN8:exon:5,ID=AT5G15100:exon:5,Parent=AT5G15100.1
+Chr5,Araport11,CDS,4892327,4892403,.,-,0,AT5G15100,1,Name=PIN8:CDS:5,ID=AT5G15100:CDS:5,Parent=AT5G15100.1
+Chr5,Araport11,exon,4892486,4892643,.,-,.,AT5G15100,1,Name=PIN8:exon:4,ID=AT5G15100:exon:4,Parent=AT5G15100.1
+Chr5,Araport11,CDS,4892486,4892643,.,-,2,AT5G15100,1,Name=PIN8:CDS:4,ID=AT5G15100:CDS:4,Parent=AT5G15100.1
+Chr5,Araport11,exon,4892730,4892815,.,-,.,AT5G15100,1,Name=PIN8:exon:3,ID=AT5G15100:exon:3,Parent=AT5G15100.1
+Chr5,Araport11,CDS,4892730,4892815,.,-,1,AT5G15100,1,Name=PIN8:CDS:3,ID=AT5G15100:CDS:3,Parent=AT5G15100.1
+Chr5,Araport11,exon,4893147,4893336,.,-,.,AT5G15100,1,Name=PIN8:exon:2,ID=AT5G15100:exon:2,Parent=AT5G15100.1
+Chr5,Araport11,CDS,4893147,4893336,.,-,2,AT5G15100,1,Name=PIN8:CDS:2,ID=AT5G15100:CDS:2,Parent=AT5G15100.1
+Chr5,Araport11,CDS,4893412,4893937,.,-,0,AT5G15100,1,Name=PIN8:CDS:1,ID=AT5G15100:CDS:1,Parent=AT5G15100.1
+Chr5,Araport11,exon,4893412,4894113,.,-,.,AT5G15100,1,Name=PIN8:exon:1,ID=AT5G15100:exon:1,Parent=AT5G15100.1
+Chr5,Araport11,five_prime_UTR,4893938,4894113,.,-,.,AT5G15100,1,Name=PIN8:five_prime_UTR:1,ID=AT5G15100:five_prime_UTR:1,Parent=AT5G15100.1

@@ -1,0 +1,14 @@
+chrom,source,feature,begin,end,,,,locus,transcript,,,
+Chr4,Araport11,mRNA,1319603,1321608,.,-,.,AT4G02980,1,_Curator_summary=Auxin binding protein involved in cell elongation and cell division. ABP1 is ubiquitinated in vitro and in planta by AtRma2.,Dbxref=gene:2139384,
+Chr4,Araport11,three_prime_UTR,1319603,1319901,.,-,.,AT4G02980,1,Name=ABP1:three_prime_UTR:1,ID=AT4G02980:three_prime_UTR:1,Parent=AT4G02980.1
+Chr4,Araport11,exon,1319603,1320007,.,-,.,AT4G02980,1,Name=ABP1:exon:5,ID=AT4G02980:exon:5,Parent=AT4G02980.1
+Chr4,Araport11,CDS,1319902,1320007,.,-,1,AT4G02980,1,Name=ABP1:CDS:5,ID=AT4G02980:CDS:5,Parent=AT4G02980.1
+Chr4,Araport11,exon,1320092,1320156,.,-,.,AT4G02980,1,Name=ABP1:exon:4,ID=AT4G02980:exon:4,Parent=AT4G02980.1
+Chr4,Araport11,CDS,1320092,1320156,.,-,0,AT4G02980,1,Name=ABP1:CDS:4,ID=AT4G02980:CDS:4,Parent=AT4G02980.1
+Chr4,Araport11,exon,1320553,1320753,.,-,.,AT4G02980,1,Name=ABP1:exon:3,ID=AT4G02980:exon:3,Parent=AT4G02980.1
+Chr4,Araport11,CDS,1320553,1320753,.,-,0,AT4G02980,1,Name=ABP1:CDS:3,ID=AT4G02980:CDS:3,Parent=AT4G02980.1
+Chr4,Araport11,exon,1320843,1320949,.,-,.,AT4G02980,1,Name=ABP1:exon:2,ID=AT4G02980:exon:2,Parent=AT4G02980.1
+Chr4,Araport11,CDS,1320843,1320949,.,-,2,AT4G02980,1,Name=ABP1:CDS:2,ID=AT4G02980:CDS:2,Parent=AT4G02980.1
+Chr4,Araport11,CDS,1321332,1321449,.,-,0,AT4G02980,1,Name=ABP1:CDS:1,ID=AT4G02980:CDS:1,Parent=AT4G02980.1
+Chr4,Araport11,exon,1321332,1321608,.,-,.,AT4G02980,1,Name=ABP1:exon:1,ID=AT4G02980:exon:1,Parent=AT4G02980.1
+Chr4,Araport11,five_prime_UTR,1321450,1321608,.,-,.,AT4G02980,1,Name=ABP1:five_prime_UTR:1,ID=AT4G02980:five_prime_UTR:1,Parent=AT4G02980.1

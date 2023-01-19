@@ -1,0 +1,10 @@
+chrom,source,feature,begin,end,,,,locus,transcript,,,
+Chr1,Araport11,mRNA,5365512,5366497,.,-,.,AT1G15580,1,_Curator_summary=auxin induced protein,Dbxref=PMID:11118137,
+Chr1,Araport11,three_prime_UTR,5365512,5365763,.,-,.,AT1G15580,1,Name=IAA5:three_prime_UTR:1,ID=AT1G15580:three_prime_UTR:1,Parent=AT1G15580.1
+Chr1,Araport11,exon,5365512,5365824,.,-,.,AT1G15580,1,Name=IAA5:exon:3,ID=AT1G15580:exon:3,Parent=AT1G15580.1
+Chr1,Araport11,CDS,5365764,5365824,.,-,1,AT1G15580,1,Name=IAA5:CDS:3,ID=AT1G15580:CDS:3,Parent=AT1G15580.1
+Chr1,Araport11,exon,5365913,5365997,.,-,.,AT1G15580,1,Name=IAA5:exon:2,ID=AT1G15580:exon:2,Parent=AT1G15580.1
+Chr1,Araport11,CDS,5365913,5365997,.,-,2,AT1G15580,1,Name=IAA5:CDS:2,ID=AT1G15580:CDS:2,Parent=AT1G15580.1
+Chr1,Araport11,CDS,5366115,5366460,.,-,0,AT1G15580,1,Name=IAA5:CDS:1,ID=AT1G15580:CDS:1,Parent=AT1G15580.1
+Chr1,Araport11,exon,5366115,5366497,.,-,.,AT1G15580,1,Name=IAA5:exon:1,ID=AT1G15580:exon:1,Parent=AT1G15580.1
+Chr1,Araport11,five_prime_UTR,5366461,5366497,.,-,.,AT1G15580,1,Name=IAA5:five_prime_UTR:1,ID=AT1G15580:five_prime_UTR:1,Parent=AT1G15580.1

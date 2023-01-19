@@ -1,0 +1,8 @@
+chrom,source,feature,begin,end,,,,locus,transcript,,,
+Chr5,Araport11,mRNA,23269914,23271092,.,+,.,AT5G57420,1,_Curator_summary=Belongs to auxin inducible gene family.,Dbxref=PMID:11118137,
+Chr5,Araport11,five_prime_UTR,23269914,23270023,.,+,.,AT5G57420,1,Name=IAA33:five_prime_UTR:1,ID=AT5G57420:five_prime_UTR:1,Parent=AT5G57420.1
+Chr5,Araport11,exon,23269914,23270460,.,+,.,AT5G57420,1,Name=IAA33:exon:1,ID=AT5G57420:exon:1,Parent=AT5G57420.1
+Chr5,Araport11,CDS,23270024,23270460,.,+,0,AT5G57420,1,Name=IAA33:CDS:1,ID=AT5G57420:CDS:1,Parent=AT5G57420.1
+Chr5,Araport11,CDS,23270881,23270959,.,+,1,AT5G57420,1,Name=IAA33:CDS:2,ID=AT5G57420:CDS:2,Parent=AT5G57420.1
+Chr5,Araport11,exon,23270881,23271092,.,+,.,AT5G57420,1,Name=IAA33:exon:2,ID=AT5G57420:exon:2,Parent=AT5G57420.1
+Chr5,Araport11,three_prime_UTR,23270960,23271092,.,+,.,AT5G57420,1,Name=IAA33:three_prime_UTR:1,ID=AT5G57420:three_prime_UTR:1,Parent=AT5G57420.1
