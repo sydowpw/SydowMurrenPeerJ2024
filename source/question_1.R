@@ -18,37 +18,33 @@ library(lmerTest)
 ### ground phenotypes paired with differences in plant fitness and fruit production.
 
 df <- read.csv("./data/combined_data_clean.csv") 
+
+# Define additional traits
+
 df$mutant <- ifelse(df$insert.location == "phytometer", "N", "Y")
-df$ttl.biomass <- df$above.ground.mass.mg + df$below.ground.mass.mg
+df$LR.density <- ifelse(df$collection.time == "14d", (df$upper.LR.count + df$mid.LR.count + df$lower.LR.count) / df$primary.length, 
+                        ifelse(df$collection.time =="21d", (df$mid.LR.count + df$lower.LR.count) / ((2/3)*df$primary.length), NA))
+df$avg.fruit.length <- ifelse(df$collection.time == "fruit", (df$basal.fruit.length + df$mid.fruit.length + df$upper.fruit.length) / 3, NA)
+df$fitness <- ifelse(df$collection.time == 'fruit', df$avg.fruit.length * df$fruit.num, NA)
 
 ### create df_SALK df with just mutants
 
-df_SALK <- df %>% filter(mutant == "Y")%>%
-  select(Stock_number,treatment, tray:column, collection.time, rosette.diameter, germination.day, Length.cm., primary.length:lower.LR.length,
-         LR.count:above.ground.mass.mg, day.to.bolt:day.to.flower, day.to.mature, basal.fruit.length:flw.buds, ttl.biomass)
+df_SALK <- df %>% filter(mutant == "Y") %>%
+  select(Stock_number,treatment, tray:column, collection.time, rosette.diameter, LR.density, diameter.at.bolt, 
+         Length.cm., below.ground.mass.mg, above.ground.mass.mg, inflorescence.height, ttl.branch, 
+         fruit.num, avg.fruit.length, fitness, germination.day, day.to.bolt, day.to.flower, days.to.collect, ttl.branch)
 
 # Analysis of EARLY stage -------------------------------------------------
 
 early <- df_SALK %>% filter(treatment != "promix") %>% filter(collection.time == "14d") %>%
-  select(Stock_number, treatment, tray:column, rosette.diameter:above.ground.mass.mg,ttl.biomass) %>% 
-  select(-LR.count) %>% select(-LR.density) %>% select(-ttl.LR.count)
-
-early$ttl.LR <- early$lower.LR.count + early$mid.LR.count + early$upper.LR.count
-early$LR.density <- early$ttl.LR / early$primary.length
+  select(Stock_number, treatment, tray:column, rosette.diameter, Length.cm., below.ground.mass.mg, 
+         above.ground.mass.mg, LR.density)
 
 # complete transformations
  
-early$upper.LR.count <- sqrt(early$upper.LR.count) + .5
-early$lower.LR.count <- sqrt(early$lower.LR.count) + .5
-early$lower.LR.length <- sqrt(early$lower.LR.length) + .5
-early$upper.LR.length <- sqrt(early$upper.LR.length) + .5
 early$LR.density <- sqrt(early$LR.density) + .5
-early$upper.LR.density <- sqrt(early$upper.LR.density) + .5
-early$mid.LR.density <- sqrt(early$mid.LR.density) + .5
-early$lower.LR.density <- sqrt(early$lower.LR.density) + .5
 early$below.ground.mass.mg <- sqrt(early$below.ground.mass.mg) + 0.5
 early$above.ground.mass.mg <- log10(early$above.ground.mass.mg) + 1
-
 
 # run early models
 
@@ -75,27 +71,15 @@ dev.off()
 # Analysis of LATE stage --------------------------------------------------
 
 late <- df_SALK %>% filter(treatment != "promix") %>% filter(collection.time == "21d") %>% 
-  select(Stock_number, treatment, tray:column, rosette.diameter:above.ground.mass.mg, ttl.biomass) %>% 
-  select(-LR.count, -upper.LR.length,-upper.LR.count, -ttl.LR.count, -upper.LR.density)
-
-### add LR.count column
-
-late$LR.count <- late$mid.LR.count + late$lower.LR.count
+  select(Stock_number, treatment, tray:column, rosette.diameter, Length.cm., below.ground.mass.mg, 
+         above.ground.mass.mg, LR.density)
 
 # complete transformations
 
 late$rosette.diameter <- log10(late$rosette.diameter) + 1
-late$primary.length <- log10(late$primary.length) + 1
-late$mid.LR.count <- sqrt(late$mid.LR.count) + .5
-late$lower.LR.count <- sqrt(late$lower.LR.count) + .5
-late$lower.LR.length <- sqrt(late$lower.LR.length) + .5
-late$mid.LR.length <- sqrt(late$mid.LR.length) + .5
 late$LR.density <- sqrt(late$LR.density) + 0.5
-late$mid.LR.density <- sqrt(late$mid.LR.density) + 0.5
-late$LR.count <- sqrt(late$LR.count) + .5
 late$below.ground.mass.mg <- sqrt(late$below.ground.mass.mg) + .5
 late$above.ground.mass.mg <- sqrt(late$above.ground.mass.mg) + .5
-late$ttl.biomass <- log10(late$ttl.biomass) + 1
 
 # run late models
 
@@ -122,29 +106,17 @@ dev.off()
 # Analysis of MATURE stage ------------------------------------------------
 
 mature <- df_SALK %>% filter(treatment != "promix") %>% filter(collection.time == "fruit") %>%
-  select(Stock_number, treatment, tray:column, germination.day:Length.cm., below.ground.mass.mg:ttl.biomass)
-
-mature$avg.fruit.length = (mature$basal.fruit.length + mature$mid.fruit.length + mature$upper.fruit.length) / 3
-mature$fitness = mature$avg.fruit.length * mature$fruit.num
+  select(Stock_number, treatment, tray:column, diameter.at.bolt, Length.cm., 
+         below.ground.mass.mg, above.ground.mass.mg, inflorescence.height,
+         ttl.branch, fruit.num, avg.fruit.length, fitness, germination.day, day.to.bolt, 
+         day.to.flower, days.to.collect, ttl.branch)
 
 # complete transformations
 
 mature$day.to.bolt <- sqrt(mature$day.to.bolt) + .5
 mature$day.to.flower <- sqrt(mature$day.to.flower) + .5
-mature$basal.fruit.length <- log10(mature$basal.fruit.length) + 1
-mature$mid.fruit.length <- log10(mature$mid.fruit.length) + 1
-mature$upper.fruit.length <- log10(mature$upper.fruit.length) + 1
 mature$inflorescence.height <- log10(mature$inflorescence.height) + 1
-mature$basal.branch <- sqrt(mature$basal.branch) + .5
-mature$ttl.maininfl.branch <- sqrt(mature$ttl.maininfl.branch) + .5
-mature$branch.basalbranch <- sqrt(mature$branch.basalbranch) + .5
-mature$days.to.bolt <- sqrt(mature$days.to.bolt) + .5
-mature$days.to.flower <- sqrt(mature$days.to.flower) + .5
-mature$ttl.maininfl.branch <- sqrt(mature$ttl.maininfl.branch) + 0.5
 mature$fruit.num <- sqrt(mature$fruit.num) + .5
-mature$flw.num <- sqrt(mature$flw.num) +.5
-mature$aborted.fruits <- sqrt(mature$aborted.fruits) + .5
-mature$flw.buds <- sqrt(mature$flw.buds) + .5
 
 # run mature models
 
