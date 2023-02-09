@@ -286,7 +286,7 @@ Fig5 <- Fig5_sum %>%
         legend.title=element_blank(),
         axis.line = element_line(size=2)) + xlab("Treatment")
 
-pdf(file = './figs/Figure1.pdf', height = 5, width = 5)
+pdf(file = './figs/Figure5.pdf', height = 5, width = 5)
 Fig5
 dev.off()
 
