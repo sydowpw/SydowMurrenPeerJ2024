@@ -9,7 +9,6 @@ library(car)
 library(lme4)
 library(lmerTest)
 library(gridExtra)
-library(vistime)
 
 # Load data
 df <- read.csv("./data/combined_data_clean.csv") 
@@ -755,7 +754,7 @@ pdf(file = './figs/Figure10.pdf', height = 6.5, width = 10)
 grid.arrange(Fig10b, Fig10a, ncol = 2)
 dev.off()
 
-# Levene's  testing
+# Levene's testing --------------------------------------------------------
 
 early.IAA <- df %>% filter(treatment == 'IAA' & plant.age == 14)
 early.control <- df %>% filter(treatment == 'control' & plant.age == 14)
