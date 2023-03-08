@@ -246,11 +246,12 @@ pheno_2 <- df %>% filter(treatment != 'promix') %>% filter(plant.age == 44) %>%
         axis.line.y = element_blank(),
         text=element_text(size=20, face='bold'),
         axis.line = element_line(size=2)) +
+  scale_y_continuous(breaks = c(0, 150, 300, 450)) +
   coord_flip()
 
 # add together
 
-pdf(file = './figs/Figure4.pdf', height = 5, width = 10)
+pdf(file = './figs/Figure4.pdf', height = 7, width = 11)
 grid.arrange(pheno_1, pheno_2, nrow = 1, widths=c(2.75,1))
 dev.off()
 
