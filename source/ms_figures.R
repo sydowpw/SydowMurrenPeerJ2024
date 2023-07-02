@@ -61,9 +61,9 @@ Fig1A_sum <- df %>%
   filter(treatment != "promix") %>% filter(collection.time == "14d") %>%
   filter(gene != "phytometer") %>%
   group_by(treatment, gene) %>%
-  summarise(mean_LR.density = mean(LR.density, na.rm=T),
-            LR.density_sd = sd(LR.density,na.rm=T), LR.density_samp = n()) %>%
-  mutate(LR.density.stderr = LR.density_sd/sqrt(LR.density_samp))
+  summarise(mean_Length.cm. = mean(Length.cm., na.rm=T),
+            Length.cm._sd = sd(Length.cm.,na.rm=T), Length.cm._samp = n()) %>%
+  mutate(Length.cm..stderr = Length.cm._sd/sqrt(Length.cm._samp))
 
 # Order gene names
 Fig1A_sum$gene <- as.factor(Fig1A_sum$gene)
@@ -72,23 +72,23 @@ Fig1A_sum$gene <- ordered(Fig1A_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1A <- Fig1A_sum %>% 
-  ggplot(aes(x = treatment, y = mean_LR.density, color = gene)) + geom_point(size = 4) +
-  #geom_errorbar((aes(ymin = mean_LR.density - LR.density.stderr,
-  #                   ymax = mean_LR.density + LR.density.stderr)), width = .2) +
+  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene)) + geom_point(size = 4) +
+  #geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
+  #                   ymax = mean_Length.cm. + Length.cm..stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
-  ylab("Mean LR Density") +
+  ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("A)         Early Seedling") +
-  theme(legend.position = "right",
+  ggtitle("A)        Early Seedling") +
+  theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
         legend.title=element_blank(),
         axis.line = element_line(size=2)) + xlab("Treatment")
 
 Fig1B_sum <- df %>%
-  filter(treatment != "promix") %>% filter(collection.time == "14d") %>%
+  filter(treatment != "promix") %>% filter(collection.time == "21d") %>%
   filter(gene != "phytometer") %>%
   group_by(treatment, gene) %>%
   summarise(mean_Length.cm. = mean(Length.cm., na.rm=T),
@@ -110,51 +110,21 @@ Fig1B <- Fig1B_sum %>%
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("B)         Early Seedling") +
+  ggtitle("B)        Late Seedling") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
         legend.title=element_blank(),
         axis.line = element_line(size=2)) + xlab("Treatment")
 
-
-Fig1C_sum <- df %>%
-  filter(treatment != "promix") %>% filter(collection.time == "21d") %>%
-  filter(gene != "phytometer") %>%
-  group_by(treatment, gene) %>%
-  summarise(mean_above.ground.mass.mg = mean(above.ground.mass.mg, na.rm=T),
-            above.ground.mass.mg_sd = sd(above.ground.mass.mg,na.rm=T), above.ground.mass.mg_samp = n()) %>%
-  mutate(above.ground.mass.mg.stderr = above.ground.mass.mg_sd/sqrt(above.ground.mass.mg_samp))
-
-# Order gene names
-Fig1C_sum$gene <- as.factor(Fig1C_sum$gene)
-Fig1C_sum$gene <- ordered(Fig1C_sum$gene, levels = c("abp1", "afb3", "arf1", "arf4", "arf11",
-                                                     "arf14", "arf21", "iaa5", "iaa8", "iaa15",
-                                                     "iaa33", "lax2", "pin7", "pin8", "sur1"))
-
-Fig1C <- Fig1C_sum %>% 
-  ggplot(aes(x = treatment, y = mean_above.ground.mass.mg, color = gene)) + geom_point(size = 4) +
-  #geom_errorbar((aes(ymin = mean_above.ground.mass.mg - above.ground.mass.mg.stderr,
-  #                   ymax = mean_above.ground.mass.mg + above.ground.mass.mg.stderr)), width = .2) +
-  stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
-  scale_color_manual(values = scale.mutants) +
-  ylab("Mean Abovegroundmass (mg)") +
-  scale_x_discrete(labels = c('Control', "Auxin")) +
-  theme_classic() +
-  ggtitle("C)        Late Seedling") +
-  theme(legend.position = "none",
-        text=element_text(size=17, face='bold'),
-        legend.text=element_text(face="italic"),
-        legend.title=element_blank(),
-        axis.line = element_line(size=2)) + xlab("Treatment")
 
 Fig1D_sum <- df %>%
-  filter(treatment != "promix") %>% filter(collection.time == "21d") %>%
+  filter(treatment != "promix") %>% filter(collection.time == "14d") %>%
   filter(gene != "phytometer") %>%
   group_by(treatment, gene) %>%
-  summarise(mean_Length.cm. = mean(Length.cm., na.rm=T),
-            Length.cm._sd = sd(Length.cm.,na.rm=T), Length.cm._samp = n()) %>%
-  mutate(Length.cm..stderr = Length.cm._sd/sqrt(Length.cm._samp))
+  summarise(mean_LR.density = mean(LR.density, na.rm=T),
+            LR.density_sd = sd(LR.density,na.rm=T), LR.density_samp = n()) %>%
+  mutate(LR.density.stderr = LR.density_sd/sqrt(LR.density_samp))
 
 # Order gene names
 Fig1D_sum$gene <- as.factor(Fig1D_sum$gene)
@@ -163,15 +133,45 @@ Fig1D_sum$gene <- ordered(Fig1D_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1D <- Fig1D_sum %>% 
-  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene)) + geom_point(size = 4) +
-  #geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
-  #                   ymax = mean_Length.cm. + Length.cm..stderr)), width = .2) +
+  ggplot(aes(x = treatment, y = mean_LR.density, color = gene)) + geom_point(size = 4) +
+  #geom_errorbar((aes(ymin = mean_LR.density - LR.density.stderr,
+  #                   ymax = mean_LR.density + LR.density.stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
-  ylab("Mean Root Length (cm)") +
+  ylab("Mean LR Density") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("D)        Late Seedling") +
+  ggtitle("D)        Early Seedling") +
+  theme(legend.position = "right",
+        text=element_text(size=17, face='bold'),
+        legend.text=element_text(face="italic"),
+        legend.title=element_blank(),
+        axis.line = element_line(size=2)) + xlab("Treatment")
+
+Fig1E_sum <- df %>%
+  filter(treatment != "promix") %>% filter(collection.time == "21d") %>%
+  filter(gene != "phytometer") %>%
+  group_by(treatment, gene) %>%
+  summarise(mean_above.ground.mass.mg = mean(above.ground.mass.mg, na.rm=T),
+            above.ground.mass.mg_sd = sd(above.ground.mass.mg,na.rm=T), above.ground.mass.mg_samp = n()) %>%
+  mutate(above.ground.mass.mg.stderr = above.ground.mass.mg_sd/sqrt(above.ground.mass.mg_samp))
+
+# Order gene names
+Fig1E_sum$gene <- as.factor(Fig1E_sum$gene)
+Fig1E_sum$gene <- ordered(Fig1E_sum$gene, levels = c("abp1", "afb3", "arf1", "arf4", "arf11",
+                                                     "arf14", "arf21", "iaa5", "iaa8", "iaa15",
+                                                     "iaa33", "lax2", "pin7", "pin8", "sur1"))
+
+Fig1E <- Fig1E_sum %>% 
+  ggplot(aes(x = treatment, y = mean_above.ground.mass.mg, color = gene)) + geom_point(size = 4) +
+  #geom_errorbar((aes(ymin = mean_above.ground.mass.mg - above.ground.mass.mg.stderr,
+  #                   ymax = mean_above.ground.mass.mg + above.ground.mass.mg.stderr)), width = .2) +
+  stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
+  scale_color_manual(values = scale.mutants) +
+  ylab("Mean Abovegroundmass (mg)") +
+  scale_x_discrete(labels = c('Control', "Auxin")) +
+  theme_classic() +
+  ggtitle("E)       Late Seedling") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
@@ -185,7 +185,7 @@ temp$mutant_gene <- temp$gene
 df <- temp %>% select(mutant_gene, locus_capt) %>% right_join(df)
 df$gene <- df$mutant_gene
 
-Fig1E_sum <- df %>%
+Fig1F_sum <- df %>%
   filter(treatment != "promix") %>% filter(collection.time == "fruit") %>%
   filter(gene != "phytometer") %>%
   group_by(treatment, gene) %>%
@@ -194,12 +194,12 @@ Fig1E_sum <- df %>%
   mutate(day.to.flower.stderr = day.to.flower_sd/sqrt(day.to.flower_samp))
 
 # Order gene names
-Fig1E_sum$gene <- as.factor(Fig1E_sum$gene)
-Fig1E_sum$gene <- ordered(Fig1E_sum$gene, levels = c("abp1", "afb3", "arf1", "arf4", "arf11",
+Fig1F_sum$gene <- as.factor(Fig1F_sum$gene)
+Fig1F_sum$gene <- ordered(Fig1F_sum$gene, levels = c("abp1", "afb3", "arf1", "arf4", "arf11",
                                                      "arf14", "arf21", "iaa5", "iaa8", "iaa15",
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
-Fig1E <- Fig1E_sum %>% 
+Fig1F <- Fig1F_sum %>% 
   ggplot(aes(x = treatment, y = mean_day.to.flower, color = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_day.to.flower - day.to.flower.stderr,
   #                   ymax = mean_day.to.flower + day.to.flower.stderr)), width = .2) +
@@ -208,14 +208,14 @@ Fig1E <- Fig1E_sum %>%
   ylab("Mean Days to Flower") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("E)              Mature") +
+  ggtitle("F)             Mature") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
         legend.title=element_blank(),
         axis.line = element_line(size=2)) + xlab("Treatment")
 
-Fig1F_sum <- df %>%
+Fig1C_sum <- df %>%
   filter(treatment != "promix") %>% filter(collection.time == "fruit") %>%
   filter(gene != "phytometer") %>%
   group_by(treatment, gene) %>%
@@ -224,12 +224,12 @@ Fig1F_sum <- df %>%
   mutate(Length.cm..stderr = Length.cm._sd/sqrt(Length.cm._samp))
 
 # Order gene names
-Fig1F_sum$gene <- as.factor(Fig1F_sum$gene)
-Fig1F_sum$gene <- ordered(Fig1F_sum$gene, levels = c("abp1", "afb3", "arf1", "arf4", "arf11",
+Fig1C_sum$gene <- as.factor(Fig1C_sum$gene)
+Fig1C_sum$gene <- ordered(Fig1C_sum$gene, levels = c("abp1", "afb3", "arf1", "arf4", "arf11",
                                                      "arf14", "arf21", "iaa5", "iaa8", "iaa15",
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
-Fig1F <- Fig1F_sum %>% 
+Fig1C <- Fig1C_sum %>% 
   ggplot(aes(x = treatment, y = mean_Length.cm., color = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
   #                   ymax = mean_Length.cm. + Length.cm..stderr)), width = .2) +
@@ -238,15 +238,15 @@ Fig1F <- Fig1F_sum %>%
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("F)               Mature") +
+  ggtitle("C)             Mature") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
         legend.title=element_blank(),
         axis.line = element_line(size=2)) + xlab("Treatment")
 
-pdf(file = './figs/Figure1.pdf', height = 14, width = 10)
-ggarrange(Fig1A, Fig1B, Fig1C, Fig1D, Fig1E, Fig1F, ncol = 2, nrow = 3, common.legend = TRUE, legend = "right")
+pdf(file = './figs/Figure1.pdf', height = 10, width = 14)
+ggarrange(Fig1A, Fig1B, Fig1C, Fig1D, Fig1E, Fig1F, ncol = 3, nrow = 2, common.legend = TRUE, legend = "right")
 dev.off()
 
 # Figure 2 Plant Phenology by Treatment ------------------------------------------
