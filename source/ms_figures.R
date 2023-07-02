@@ -604,7 +604,7 @@ pdf(file = './figs/Figure6.pdf', height = 10, width = 15)
 grid.arrange(p1, p2, nrow = 1, widths=c(5,1))
 dev.off()
 
-# Figure 7 Histograms to show NAT vs SALK mutant variation -------------------------
+# Figure S5 Histograms to show NAT vs SALK mutant variation -------------------------
 library(scales)
 
 df$Line = ifelse(is.na(df$PA.group), "Natural Accession", "Insert Mutant")
@@ -831,7 +831,7 @@ Fig7a <- grid.arrange(R1, R2, R3, B1, B2, B3, A1, A2, A3, ncol = 3, widths=c(1.0
 
 Fig7b <- grid.arrange(CR1, CR2, CR3, CB1, CB2, CB3, CA1, CA2, CA3, ncol = 3, widths=c(1.08,1,1))
 
-pdf(file = './figs/Figure7.pdf', height = 6.5, width = 10)
+pdf(file = './figs/FigureS5.pdf', height = 6.5, width = 10)
 grid.arrange(Fig7b, Fig7a, ncol = 2)
 dev.off()
 
