@@ -205,7 +205,7 @@ Fig1E <- Fig1E_sum %>%
   #                   ymax = mean_day.to.flower + day.to.flower.stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
-  ylab("Mean Root Length (cm)") +
+  ylab("Mean Days to Flower") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
   ggtitle("E)              Mature") +
