@@ -51,6 +51,9 @@ scale.all <- c('#CC79A7','#D55E00','#0072B2','#0072B2','#0072B2','#0072B2',
                '#56B4E9','#56B4E9','#E69F00',"#78909C","#546E7A",'#455A64',
                '#37474F','#263238','black')
 
+# Define shape scale for plots with mutants
+scale.shape.mutants <- c(19,19,19,15,17,18,8,19,15,17,18,19,19,15,19)
+
 # Define shape scale for plots with mutants and WT
 scale.shape.all <- c(19,19,19,15,17,18,8,19,15,17,18,19,19,15,19,19,19,19,
                      19,19,19)
@@ -72,11 +75,12 @@ Fig1A_sum$gene <- ordered(Fig1A_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1A <- Fig1A_sum %>% 
-  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene)) + geom_point(size = 4) +
+  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene, shape = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
   #                   ymax = mean_Length.cm. + Length.cm..stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
+  scale_shape_manual(values = scale.shape.mutants) +
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
@@ -102,11 +106,12 @@ Fig1B_sum$gene <- ordered(Fig1B_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1B <- Fig1B_sum %>% 
-  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene)) + geom_point(size = 4) +
+  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene, shape = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
   #                   ymax = mean_Length.cm. + Length.cm..stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
+  scale_shape_manual(values = scale.shape.mutants) +
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
@@ -133,11 +138,12 @@ Fig1D_sum$gene <- ordered(Fig1D_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1D <- Fig1D_sum %>% 
-  ggplot(aes(x = treatment, y = mean_LR.density, color = gene)) + geom_point(size = 4) +
+  ggplot(aes(x = treatment, y = mean_LR.density, color = gene, shape = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_LR.density - LR.density.stderr,
   #                   ymax = mean_LR.density + LR.density.stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
+  scale_shape_manual(values = scale.shape.mutants) +
   ylab("Mean LR Density") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
@@ -163,11 +169,12 @@ Fig1E_sum$gene <- ordered(Fig1E_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1E <- Fig1E_sum %>% 
-  ggplot(aes(x = treatment, y = mean_above.ground.mass.mg, color = gene)) + geom_point(size = 4) +
+  ggplot(aes(x = treatment, y = mean_above.ground.mass.mg, color = gene, shape = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_above.ground.mass.mg - above.ground.mass.mg.stderr,
   #                   ymax = mean_above.ground.mass.mg + above.ground.mass.mg.stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
+  scale_shape_manual(values = scale.shape.mutants) +
   ylab("Mean Abovegroundmass (mg)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
@@ -200,11 +207,12 @@ Fig1F_sum$gene <- ordered(Fig1F_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1F <- Fig1F_sum %>% 
-  ggplot(aes(x = treatment, y = mean_day.to.flower, color = gene)) + geom_point(size = 4) +
+  ggplot(aes(x = treatment, y = mean_day.to.flower, color = gene, shape = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_day.to.flower - day.to.flower.stderr,
   #                   ymax = mean_day.to.flower + day.to.flower.stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
+  scale_shape_manual(values = scale.shape.mutants) +
   ylab("Mean Days to Flower") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
@@ -230,11 +238,12 @@ Fig1C_sum$gene <- ordered(Fig1C_sum$gene, levels = c("abp1", "afb3", "arf1", "ar
                                                      "iaa33", "lax2", "pin7", "pin8", "sur1"))
 
 Fig1C <- Fig1C_sum %>% 
-  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene)) + geom_point(size = 4) +
+  ggplot(aes(x = treatment, y = mean_Length.cm., color = gene, shape = gene)) + geom_point(size = 4) +
   #geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
   #                   ymax = mean_Length.cm. + Length.cm..stderr)), width = .2) +
   stat_summary(aes(group = gene), geom = "line", fun.y = mean, size = 1.2) +
   scale_color_manual(values = scale.mutants) +
+  scale_shape_manual(values = scale.shape.mutants) +
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
