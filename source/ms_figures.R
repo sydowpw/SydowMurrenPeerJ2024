@@ -80,7 +80,7 @@ Fig1A <- Fig1A_sum %>%
   ylab("Mean LR Density") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("A)") +
+  ggtitle("A)         Early Seedling") +
   theme(legend.position = "right",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
@@ -110,7 +110,7 @@ Fig1B <- Fig1B_sum %>%
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("B)") +
+  ggtitle("B)         Early Seedling") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
@@ -141,7 +141,7 @@ Fig1C <- Fig1C_sum %>%
   ylab("Mean Abovegroundmass (mg)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("C)") +
+  ggtitle("C)        Late Seedling") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
@@ -171,7 +171,7 @@ Fig1D <- Fig1D_sum %>%
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("D)") +
+  ggtitle("D)        Late Seedling") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
@@ -208,7 +208,7 @@ Fig1E <- Fig1E_sum %>%
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("E)") +
+  ggtitle("E)              Mature") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
@@ -238,7 +238,7 @@ Fig1F <- Fig1F_sum %>%
   ylab("Mean Root Length (cm)") +
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
-  ggtitle("F)") +
+  ggtitle("F)               Mature") +
   theme(legend.position = "none",
         text=element_text(size=17, face='bold'),
         legend.text=element_text(face="italic"),
