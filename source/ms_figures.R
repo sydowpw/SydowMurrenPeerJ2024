@@ -389,7 +389,7 @@ Fig4 <- Fig4 %>%
   stat_summary(aes(group = Stock_number), geom = "line", fun = mean, size = 1.2) +
   geom_point(size = 4) +
   scale_x_continuous(breaks=c(14,21,44), label = c("14", "21", "Mature")) +
-  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.5, 1.5)) +
+  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.67, 1.67)) +
   scale_color_manual(values = scale.all) +
   scale_shape_manual(values = scale.shape.all) +
   ylab("Mean Scaled LR Density") +
@@ -446,14 +446,14 @@ Fig5A$gene <- ordered(Fig5A$gene, levels = c("abp1", "afb3", "arf1", "arf4", "ar
 mutant.labs <- c("Mutant", "Natural Accession")
 names(mutant.labs) <- c("Y", "N")
 
-Fig5A <- Fig5A %>%
+Fig5A <- Fig5A %>% select(-7,-8, -9) %>%
   ggplot(aes(x = plant.age, y = mean_scaled_below.ground.mass.mg, color = gene, shape = gene)) +
   geom_hline(yintercept=0, linetype="dashed", color = "black", size = 0.8) +
   facet_grid(mutant ~ treatment,  labeller = labeller(mutant = mutant.labs)) +
   stat_summary(aes(group = Stock_number), geom = "line", fun = mean, size = 1.2) +
   geom_point(size = 4) +
   scale_x_continuous(breaks=c(14,21,44), label = c("14", "21", "Mature")) +
-  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.5, 1.5)) +
+  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.6, 1.6)) +
   scale_color_manual(values = scale.all) +
   scale_shape_manual(values = scale.shape.all) +
   ylab("Mean Scaled Belowground Mass") +
@@ -513,7 +513,7 @@ Fig5B <- Fig5B %>%
   stat_summary(aes(group = Stock_number), geom = "line", fun = mean, size = 1.2) +
   geom_point(size = 4) +
   scale_x_continuous(breaks=c(14,21,44), label = c("14", "21", "Mature")) +
-  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.5, 1.5)) +
+  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.6, 1.6)) +
   scale_color_manual(values = scale.all) +
   scale_shape_manual(values = scale.shape.all) +
   ylab("Mean Scaled Root Length") +
