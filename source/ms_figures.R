@@ -389,7 +389,7 @@ Fig4 <- Fig4 %>%
   stat_summary(aes(group = Stock_number), geom = "line", fun = mean, size = 1.2) +
   geom_point(size = 4) +
   scale_x_continuous(breaks=c(14,21,44), label = c("14", "21", "Mature")) +
-  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.5, 1.5)) +
+  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.67, 1.67)) +
   scale_color_manual(values = scale.all) +
   scale_shape_manual(values = scale.shape.all) +
   ylab("Mean Scaled LR Density") +
@@ -446,14 +446,14 @@ Fig5A$gene <- ordered(Fig5A$gene, levels = c("abp1", "afb3", "arf1", "arf4", "ar
 mutant.labs <- c("Mutant", "Natural Accession")
 names(mutant.labs) <- c("Y", "N")
 
-Fig5A <- Fig5A %>%
+Fig5A <- Fig5A %>% select(-7,-8, -9) %>%
   ggplot(aes(x = plant.age, y = mean_scaled_below.ground.mass.mg, color = gene, shape = gene)) +
   geom_hline(yintercept=0, linetype="dashed", color = "black", size = 0.8) +
   facet_grid(mutant ~ treatment,  labeller = labeller(mutant = mutant.labs)) +
   stat_summary(aes(group = Stock_number), geom = "line", fun = mean, size = 1.2) +
   geom_point(size = 4) +
   scale_x_continuous(breaks=c(14,21,44), label = c("14", "21", "Mature")) +
-  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.5, 1.5)) +
+  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.6, 1.6)) +
   scale_color_manual(values = scale.all) +
   scale_shape_manual(values = scale.shape.all) +
   ylab("Mean Scaled Belowground Mass") +
@@ -513,7 +513,7 @@ Fig5B <- Fig5B %>%
   stat_summary(aes(group = Stock_number), geom = "line", fun = mean, size = 1.2) +
   geom_point(size = 4) +
   scale_x_continuous(breaks=c(14,21,44), label = c("14", "21", "Mature")) +
-  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.5, 1.5)) +
+  scale_y_continuous(breaks=c(-1,0,1), limits = c(-1.6, 1.6)) +
   scale_color_manual(values = scale.all) +
   scale_shape_manual(values = scale.shape.all) +
   ylab("Mean Scaled Root Length") +
@@ -579,7 +579,6 @@ sumstats_dev_treat__group$treatment <- factor(sumstats_dev_treat__group$treatmen
 p1 <- sumstats_dev_treat__group %>% 
   ggplot(aes(x = plant.age, y = mean_Length.cm., color = PA.group)) + geom_point(size = 4) +
   facet_wrap(~ treatment) +
-  scale_color_discrete("APA Group:") +
   scale_color_brewer(palette = 'Dark2') +
   geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
                      ymax = mean_Length.cm. + Length.cm..stderr)), width = 1) +
@@ -588,8 +587,8 @@ p1 <- sumstats_dev_treat__group %>%
   theme_classic() +
   theme(legend.position = "top",
         text=element_text(size=20, face='bold'),
-        axis.line = element_line(size=2)) + xlab("Plant Age (Days)")
-
+        axis.line = element_line(size=2)) + xlab("Plant Age (Days)") +
+  guides(color=guide_legend(title="APA Group:")) 
 
 # plot boxplot to be flipped and pasted on the side
 
@@ -601,7 +600,7 @@ p2 <- df %>% filter(treatment != 'promix') %>% filter(PA.group == '0' | PA.group
   scale_x_discrete(labels = c('Control', "Auxin")) +
   theme_classic() +
   xlab('Treatment') + ylab('') +
-  ggtitle("Mature") +
+  ggtitle("") +
   theme(axis.text.y = element_blank(),
         axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
@@ -609,7 +608,7 @@ p2 <- df %>% filter(treatment != 'promix') %>% filter(PA.group == '0' | PA.group
         text=element_text(size=20, face='bold'),
         axis.line = element_line(size=2))
 
-pdf(file = './figs/Figure6.pdf', height = 10, width = 15)
+pdf(file = './figs/Figure6.pdf', height = 8, width = 12)
 grid.arrange(p1, p2, nrow = 1, widths=c(5,1))
 dev.off()
 
