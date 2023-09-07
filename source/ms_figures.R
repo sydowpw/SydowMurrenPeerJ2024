@@ -283,7 +283,7 @@ pheno_1 <- sumstats_pheno %>% ggplot(aes(x = mean_day, y = treatment, color = ph
   scale_color_discrete("Event:") +
   theme_classic() +
   theme(legend.position = "top",
-        text=element_text(size=20, face='bold'),
+        text=element_text(size=18, face='bold'),
         axis.line = element_line(size=2))+
   xlab('Day') + ylab('Treatment')
 
@@ -292,6 +292,7 @@ pheno_1 <- sumstats_pheno %>% ggplot(aes(x = mean_day, y = treatment, color = ph
 pheno_2 <- df %>% filter(treatment != 'promix') %>% filter(plant.age == 44) %>%
   ggplot(aes(x = treatment, y = fitness)) + geom_boxplot(lwd = 1.25) +
   scale_x_discrete(labels = c('Control', "Auxin")) +
+  scale_y_continuous(breaks = c(0,100,300,500))+
   theme_classic() +
   ggtitle("") +
   xlab('Treatment') + ylab('Fitness') +
@@ -299,13 +300,13 @@ pheno_2 <- df %>% filter(treatment != 'promix') %>% filter(plant.age == 44) %>%
         axis.ticks.y = element_blank(),
         axis.title.y = element_blank(),
         axis.line.y = element_blank(),
-        text=element_text(size=20, face='bold'),
+        text=element_text(size=18, face='bold'),
         axis.line = element_line(size=2)) +
   coord_flip()
 
 # add together
 
-pdf(file = './figs/Figure2.pdf', height = 5, width = 10)
+pdf(file = './figs/Figure2.pdf', height = 7, width = 10)
 grid.arrange(pheno_1, pheno_2, nrow = 1, widths=c(2.75,1))
 dev.off()
 
