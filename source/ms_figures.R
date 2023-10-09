@@ -577,10 +577,13 @@ sumstats_dev_treat__group$plant.age <- ifelse(sumstats_dev_treat__group$plant.ag
 sumstats_dev_treat__group$treatment <- factor(sumstats_dev_treat__group$treatment, levels = c('control', 'IAA'),
                                               labels = c("Control", "Auxin"))
 
+# Define color scale PA groups
+scale.PA <- c('#fb6a4a','#de2d26','#a50f15')
+
 p1 <- sumstats_dev_treat__group %>% 
   ggplot(aes(x = plant.age, y = mean_Length.cm., color = PA.group)) + geom_point(size = 4) +
   facet_wrap(~ treatment) +
-  scale_color_brewer(palette = 'Dark2') +
+  scale_color_manual(values = scale.PA) +
   geom_errorbar((aes(ymin = mean_Length.cm. - Length.cm..stderr,
                      ymax = mean_Length.cm. + Length.cm..stderr)), width = 1) +
   stat_summary(aes(group = PA.group), geom = "line", fun.y = mean, size = 2) +
